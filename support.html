@@ -4,99 +4,230 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Support - Rewired</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --accent-purple: #737BF2;
+            --accent-purple-light: rgba(115, 123, 242, 0.1);
+            --primary-text: #1a1a1a;
+            --secondary-text: #636366;
+            --tertiary-text: #8E8E93;
+            --background: #FFFFFF;
+            --card-background: #F8F8FA;
+            --border: #E5E5EA;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #FAFAFA;
-            color: #1a1a1a;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--background);
+            color: var(--primary-text);
             line-height: 1.7;
         }
+
         .header {
-            padding: 24px;
-            border-bottom: 1px solid #eee;
-            background: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
         }
+
         .header a {
-            font-size: 18px;
-            font-weight: 600;
-            color: #1a1a1a;
+            display: flex;
+            align-items: center;
             text-decoration: none;
         }
+
+        .header img {
+            height: 24px;
+            width: auto;
+        }
+
         .container {
-            max-width: 680px;
+            max-width: 720px;
             margin: 0 auto;
-            padding: 60px 24px 120px;
+            padding: 120px 24px 80px;
         }
+
         h1 {
-            font-size: 36px;
+            font-size: 40px;
             font-weight: 700;
-            margin-bottom: 16px;
+            margin-bottom: 8px;
         }
+
         .subtitle {
-            color: #666;
+            color: var(--secondary-text);
             font-size: 18px;
             margin-bottom: 48px;
         }
+
         .contact-card {
-            background: white;
-            border: 1px solid #eee;
-            border-radius: 16px;
-            padding: 32px;
-            margin-bottom: 48px;
+            background: var(--card-background);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 64px;
             text-align: center;
         }
+
         .contact-card h2 {
-            font-size: 20px;
-            margin-bottom: 8px;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 12px;
         }
+
         .contact-card p {
-            color: #666;
-            margin-bottom: 16px;
+            color: var(--secondary-text);
+            margin-bottom: 24px;
+            font-size: 16px;
         }
-        .contact-card a {
-            display: inline-block;
-            background: #1a1a1a;
+
+        .contact-card a.cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary-text);
             color: white;
-            padding: 14px 28px;
-            border-radius: 10px;
+            padding: 16px 32px;
+            border-radius: 16px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        h2 {
-            font-size: 24px;
+
+        .contact-card a.cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-label {
+            font-size: 13px;
             font-weight: 600;
+            color: var(--accent-purple);
+            text-transform: uppercase;
+            letter-spacing: 2px;
             margin-bottom: 24px;
         }
+
         .faq-item {
-            background: white;
-            border: 1px solid #eee;
-            border-radius: 12px;
-            padding: 24px;
+            background: var(--card-background);
+            border-radius: 16px;
+            padding: 28px 32px;
             margin-bottom: 16px;
+            transition: transform 0.2s;
         }
+
+        .faq-item:hover {
+            transform: translateY(-2px);
+        }
+
         .faq-item h3 {
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            color: var(--primary-text);
         }
+
         .faq-item p {
-            color: #666;
+            color: var(--secondary-text);
             font-size: 15px;
             margin: 0;
+            line-height: 1.7;
+        }
+
+        .faq-item a {
+            color: var(--accent-purple);
+            text-decoration: none;
+        }
+
+        .faq-item a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            padding: 48px 24px;
+            border-top: 1px solid var(--border);
+            margin-top: 80px;
+        }
+
+        .footer-inner {
+            max-width: 720px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer-logo img {
+            height: 24px;
+            width: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            color: var(--secondary-text);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-text);
+        }
+
+        .footer-copy {
+            font-size: 13px;
+            color: var(--tertiary-text);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            .contact-card {
+                padding: 32px 24px;
+            }
+
+            .faq-item {
+                padding: 24px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <a href="/">Rewired</a>
+        <a href="/">
+            <img src="/images/logo.png" alt="Rewired">
+        </a>
     </div>
 
     <div class="container">
@@ -106,10 +237,16 @@
         <div class="contact-card">
             <h2>Get in Touch</h2>
             <p>Have a question or need help? We typically respond within 24 hours.</p>
-            <a href="mailto:support@joinrewired.com">Email Support</a>
+            <a href="mailto:team@joinrewired.com" class="cta">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                Email Support
+            </a>
         </div>
 
-        <h2>Frequently Asked Questions</h2>
+        <p class="section-label">Frequently Asked Questions</p>
 
         <div class="faq-item">
             <h3>How long are the daily sessions?</h3>
@@ -146,5 +283,19 @@
             <p>The AI coach is trained to provide supportive, evidence-based guidance tailored to your specific beliefs and progress. It's not a replacement for professional therapy, but a tool to help you apply cognitive techniques in your daily life.</p>
         </div>
     </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <img src="/images/logo.png" alt="Rewired">
+            </div>
+            <div class="footer-links">
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/support">Support</a>
+                <a href="mailto:team@joinrewired.com">Contact</a>
+            </div>
+            <p class="footer-copy">&copy; 2025 Rewired. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
