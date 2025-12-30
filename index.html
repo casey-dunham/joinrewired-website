@@ -105,9 +105,23 @@
             right: 0;
             bottom: 0;
             background:
-                radial-gradient(ellipse 50% 50% at 75% 50%, rgba(115, 123, 242, 0.12) 0%, transparent 60%),
-                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(115, 123, 242, 0.08) 0%, transparent 60%);
+                radial-gradient(ellipse 50% 50% at 75% 50%, rgba(115, 123, 242, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(115, 123, 242, 0.1) 0%, transparent 60%);
             pointer-events: none;
+            animation: gradientShift 8s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                background:
+                    radial-gradient(ellipse 50% 50% at 75% 50%, rgba(115, 123, 242, 0.15) 0%, transparent 60%),
+                    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(115, 123, 242, 0.1) 0%, transparent 60%);
+            }
+            50% {
+                background:
+                    radial-gradient(ellipse 60% 60% at 65% 40%, rgba(155, 143, 255, 0.18) 0%, transparent 60%),
+                    radial-gradient(ellipse 70% 60% at 40% 10%, rgba(115, 123, 242, 0.12) 0%, transparent 60%);
+            }
         }
 
         .hero-inner {
@@ -556,6 +570,178 @@
             cursor: none;
         }
 
+        /* App Store Badge */
+        .app-store-badge {
+            height: 54px;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .app-store-badge:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        /* 3D Tilt Effect */
+        .phone-frame {
+            transition: transform 0.3s ease-out;
+            transform-style: preserve-3d;
+        }
+
+        /* Typing Animation */
+        .typing-text {
+            display: inline;
+        }
+
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background: var(--accent-purple);
+            margin-left: 4px;
+            animation: blink 1s step-end infinite;
+            vertical-align: text-bottom;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Cursor Trail */
+        .cursor-trail {
+            width: 10px;
+            height: 10px;
+            background: var(--accent-purple);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0.4;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 120px 24px;
+            background: var(--background);
+        }
+
+        .pricing-cards {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .pricing-card {
+            background: var(--card-background);
+            border-radius: 24px;
+            padding: 40px 32px;
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .pricing-card.featured {
+            background: var(--primary-text);
+            color: white;
+        }
+
+        .pricing-card.featured .pricing-period,
+        .pricing-card.featured .pricing-features li {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-purple);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pricing-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .pricing-price {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .pricing-period {
+            font-size: 14px;
+            color: var(--secondary-text);
+            margin-bottom: 32px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 32px;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            font-size: 15px;
+            color: var(--secondary-text);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .pricing-features li svg {
+            width: 20px;
+            height: 20px;
+            color: var(--accent-purple);
+            flex-shrink: 0;
+        }
+
+        .pricing-card.featured .pricing-features li svg {
+            color: #A99FFF;
+        }
+
+        .pricing-cta {
+            display: block;
+            padding: 16px 32px;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .pricing-card:not(.featured) .pricing-cta {
+            background: var(--primary-text);
+            color: white;
+        }
+
+        .pricing-card.featured .pricing-cta {
+            background: white;
+            color: var(--primary-text);
+        }
+
+        .pricing-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .hero-inner {
@@ -615,6 +801,7 @@
         <div class="nav-links">
             <a href="#how-it-works">How It Works</a>
             <a href="#features">Features</a>
+            <a href="#pricing">Pricing</a>
             <a href="/support">Support</a>
         </div>
     </nav>
@@ -627,16 +814,13 @@
             <p class="hero-tagline">Neuroplasticity-based transformation</p>
             <h1 class="hero-title">
                 Your brain learned these patterns.<br>
-                <span class="highlight">It can rewire them.</span>
+                <span class="highlight"><span class="typing-text"></span><span class="typing-cursor"></span></span>
             </h1>
             <p class="hero-subtitle">
                 95% of what you think, feel, and do runs on autopilot. Rewired helps you identify limiting beliefs and transform them through personalized, science-backed daily sessions.
             </p>
-            <a href="https://apps.apple.com/app/rewired" class="hero-cta">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
-                </svg>
-                Download for iOS
+            <a href="https://apps.apple.com/app/rewired" target="_blank" rel="noopener">
+                <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store" class="app-store-badge">
             </a>
             <p class="hero-note">Free to start. Cancel anytime.</p>
         </div>
@@ -828,16 +1012,73 @@
         </div>
     </section>
 
+    <!-- Pricing -->
+    <section class="pricing fade-in-section" id="pricing">
+        <div class="section-header">
+            <p class="section-label">Pricing</p>
+            <h2 class="section-title">Invest in your transformation</h2>
+            <p class="section-subtitle">Start free, then choose the plan that works for you.</p>
+        </div>
+        <div class="pricing-cards">
+            <div class="pricing-card">
+                <p class="pricing-name">Monthly</p>
+                <p class="pricing-price">$9.99</p>
+                <p class="pricing-period">per month</p>
+                <ul class="pricing-features">
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg>
+                        Unlimited daily sessions
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg>
+                        AI coaching anytime
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg>
+                        Progress tracking
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg>
+                        Cancel anytime
+                    </li>
+                </ul>
+                <a href="https://apps.apple.com/app/rewired" class="pricing-cta">Get Started</a>
+            </div>
+            <div class="pricing-card featured">
+                <div class="pricing-badge">Best Value</div>
+                <p class="pricing-name">Annual</p>
+                <p class="pricing-price">$59.99</p>
+                <p class="pricing-period">per year (save 50%)</p>
+                <ul class="pricing-features">
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg>
+                        Everything in Monthly
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg>
+                        6 months free
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg>
+                        Priority support
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg>
+                        Early access to new features
+                    </li>
+                </ul>
+                <a href="https://apps.apple.com/app/rewired" class="pricing-cta">Get Started</a>
+            </div>
+        </div>
+    </section>
+
     <!-- Final CTA -->
     <section class="final-cta fade-in-section">
         <div class="final-cta-inner">
             <h2>Start transforming today</h2>
             <p>Your brain is ready to change. Give it the right tools and watch what happens.</p>
-            <a href="https://apps.apple.com/app/rewired" class="hero-cta">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
-                </svg>
-                Download for iOS
+            <a href="https://apps.apple.com/app/rewired" target="_blank" rel="noopener">
+                <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store" class="app-store-badge">
             </a>
             <p class="hero-note">Free to start. Cancel anytime.</p>
         </div>
@@ -932,6 +1173,83 @@
             document.querySelectorAll('a, button').forEach(el => {
                 el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
                 el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+            });
+        }
+
+        // Cursor trail effect
+        const trailCount = 5;
+        const trails = [];
+        for (let i = 0; i < trailCount; i++) {
+            const trail = document.createElement('div');
+            trail.className = 'cursor-trail';
+            trail.style.opacity = (0.3 - (i * 0.05));
+            trail.style.width = (10 - i) + 'px';
+            trail.style.height = (10 - i) + 'px';
+            document.body.appendChild(trail);
+            trails.push({ el: trail, x: 0, y: 0 });
+        }
+
+        let mouseX = 0, mouseY = 0;
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateTrails() {
+            let x = mouseX, y = mouseY;
+            trails.forEach((trail, i) => {
+                const nextX = x + (trail.x - x) * 0.3;
+                const nextY = y + (trail.y - y) * 0.3;
+                trail.el.style.left = nextX + 'px';
+                trail.el.style.top = nextY + 'px';
+                trail.x = nextX;
+                trail.y = nextY;
+                x = nextX;
+                y = nextY;
+            });
+            requestAnimationFrame(animateTrails);
+        }
+        animateTrails();
+
+        // Typing animation
+        const typingText = document.querySelector('.typing-text');
+        const typingCursor = document.querySelector('.typing-cursor');
+        const textToType = 'It can rewire them.';
+        let charIndex = 0;
+
+        function typeText() {
+            if (charIndex < textToType.length) {
+                typingText.textContent += textToType.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeText, 80);
+            } else {
+                // Hide cursor after typing is done
+                setTimeout(() => {
+                    typingCursor.style.display = 'none';
+                }, 2000);
+            }
+        }
+
+        // Start typing after a short delay
+        setTimeout(typeText, 800);
+
+        // 3D Tilt effect on phone
+        const phoneFrame = document.querySelector('.phone-frame');
+        if (phoneFrame) {
+            const heroPhone = document.querySelector('.hero-phone');
+            heroPhone.addEventListener('mousemove', (e) => {
+                const rect = heroPhone.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                phoneFrame.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            heroPhone.addEventListener('mouseleave', () => {
+                phoneFrame.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
             });
         }
     </script>
