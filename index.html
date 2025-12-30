@@ -525,6 +525,36 @@
             transform: translateY(0);
         }
 
+        /* Custom Cursor */
+        .custom-cursor {
+            width: 12px;
+            height: 12px;
+            background: var(--accent-purple);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out, opacity 0.2s;
+            opacity: 0;
+        }
+
+        .custom-cursor.visible {
+            opacity: 1;
+        }
+
+        .custom-cursor.hover {
+            transform: translate(-50%, -50%) scale(1.5);
+        }
+
+        body {
+            cursor: none;
+        }
+
+        a, button {
+            cursor: none;
+        }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .hero-inner {
@@ -574,6 +604,8 @@
     </style>
 </head>
 <body>
+    <div class="custom-cursor"></div>
+
     <!-- Navigation -->
     <nav class="nav">
         <a href="/" class="nav-logo">
@@ -874,6 +906,25 @@
                 const scrolled = window.pageYOffset;
                 const rate = scrolled * 0.3;
                 heroPhone.style.transform = `translateY(${rate}px)`;
+            });
+        }
+
+        // Custom cursor
+        const cursor = document.querySelector('.custom-cursor');
+        if (cursor) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                cursor.classList.add('visible');
+            });
+
+            document.addEventListener('mouseleave', () => {
+                cursor.classList.remove('visible');
+            });
+
+            document.querySelectorAll('a, button').forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
             });
         }
     </script>
