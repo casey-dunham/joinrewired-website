@@ -169,7 +169,7 @@
         }
 
         .hero-title .highlight {
-            background: linear-gradient(135deg, var(--accent-purple) 0%, #9B8FFF 100%);
+            background: linear-gradient(135deg, #5B5FD4 0%, #A99FFF 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -865,11 +865,10 @@
     </footer>
 
     <script>
-        // Scroll to top on page load/reload
-        if ('scrollRestoration' in history) {
-            history.scrollRestoration = 'manual';
-        }
-        window.scrollTo(0, 0);
+        // Scroll to top on page load
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        };
 
         // Fade-in on scroll
         const observer = new IntersectionObserver((entries) => {
@@ -943,13 +942,13 @@
 
         // Smooth 3D Tilt effect on phone
         const phoneFrame = document.querySelector('.phone-frame');
-        const heroPhone = document.querySelector('.hero-phone');
-        if (phoneFrame && heroPhone) {
+        const phoneContainer = document.querySelector('.hero-phone');
+        if (phoneFrame && phoneContainer) {
             let targetRotateX = 0, targetRotateY = 0;
             let currentRotateX = 0, currentRotateY = 0;
 
-            heroPhone.addEventListener('mousemove', (e) => {
-                const rect = heroPhone.getBoundingClientRect();
+            phoneContainer.addEventListener('mousemove', (e) => {
+                const rect = phoneContainer.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
                 const centerX = rect.width / 2;
@@ -958,7 +957,7 @@
                 targetRotateY = (centerX - x) / 25;
             });
 
-            heroPhone.addEventListener('mouseleave', () => {
+            phoneContainer.addEventListener('mouseleave', () => {
                 targetRotateX = 0;
                 targetRotateY = 0;
             });
