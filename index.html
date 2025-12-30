@@ -18,7 +18,7 @@
             --secondary-text: #636366;
             --tertiary-text: #8E8E93;
             --background: #FFFFFF;
-            --card-background: #F8F8FA;
+            --card-background: #F2F2F7;
             --border: #E5E5EA;
         }
 
@@ -858,6 +858,11 @@
     </footer>
 
     <script>
+        // Scroll to top on page load
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        };
+
         // Fade-in on scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
