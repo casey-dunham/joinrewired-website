@@ -215,6 +215,18 @@
             color: var(--tertiary-text);
         }
 
+        /* Hero fade to next section */
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to bottom, transparent, var(--card-background));
+            pointer-events: none;
+        }
+
         /* Problem Section */
         .problem {
             padding: 120px 24px;
