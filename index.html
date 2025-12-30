@@ -118,24 +118,25 @@
         }
 
         .hero-phone {
-            margin-top: 60px;
-            position: relative;
-            display: flex;
-            justify-content: center;
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
         }
 
         .phone-frame {
             background: #1a1a1a;
             border-radius: 40px;
-            padding: 12px;
+            padding: 10px;
             box-shadow:
-                0 50px 100px rgba(115, 123, 242, 0.25),
-                0 20px 40px rgba(0, 0, 0, 0.1);
-            transform: perspective(1000px) rotateX(2deg);
+                0 50px 100px rgba(115, 123, 242, 0.3),
+                0 20px 40px rgba(0, 0, 0, 0.15);
+            transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
         }
 
         .phone-screen {
-            width: 280px;
+            width: 260px;
             border-radius: 32px;
             overflow: hidden;
         }
@@ -508,6 +509,12 @@
         }
 
         /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-phone {
+                display: none;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -563,12 +570,12 @@
                 Download for iOS
             </a>
             <p class="hero-note">Free to start. Cancel anytime.</p>
+        </div>
 
-            <div class="hero-phone">
-                <div class="phone-frame">
-                    <div class="phone-screen">
-                        <img src="/images/dashboard.png" alt="Rewired app dashboard">
-                    </div>
+        <div class="hero-phone">
+            <div class="phone-frame">
+                <div class="phone-screen">
+                    <img src="/images/dashboard.png" alt="Rewired app dashboard">
                 </div>
             </div>
         </div>
